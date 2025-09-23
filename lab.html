@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LMS Accessibility Modes</title>
+  <style>
+    /* Default style */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .theme-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Themes */
+    body.light {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    body.dark {
+      background-color: #1c1c1c;
+      color: #f1f1f1;
+    }
+
+    body.sepia {
+      background-color: #f4ecd8;
+      color: #5b4636;
+    }
+
+    /* Button styles */
+    .light-btn { background: #e0e0e0; }
+    .dark-btn { background: #333; color: white; }
+    .sepia-btn { background: #d4b483; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to LMS Accessibility Mode Demo</h1>
+  <p>Choose your preferred theme below. Your choice will be saved for next time.</p>
+
+  <div class="theme-buttons">
+    <button class="light-btn" onclick="setTheme('light')">Light</button>
+    <button class="dark-btn" onclick="setTheme('dark')">Dark</button>
+    <button class="sepia-btn" onclick="setTheme('sepia')">Sepia</button>
+  </div>
+
+  <script>
+    // Apply saved theme on page load
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+    };
+
+    // Function to change theme
+    function setTheme(theme) {
+      document.body.className = theme; // set body class
+      localStorage.setItem("theme", theme); // save in localStorage
+    }
+  </script>
+</body>
+</html>
